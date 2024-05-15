@@ -9,7 +9,8 @@ from fraction import Fraction
 from vllm import LLM, SamplingParams
 import sys
 MAX_INT = sys.maxsize
-CACHE_DIR = '/scratch/amangupt'
+step_tag = 'ки'
+CACHE_DIR = '/scratch/amangupt/'
 os.environ["HF_HOME"] = CACHE_DIR
 
 def is_number(s):
@@ -88,12 +89,12 @@ def gsm8k_test(model, data_path, start=0, end=MAX_INT, batch_size=1, tensor_para
 
     gsm8k_ins = gsm8k_ins[start:end]
     gsm8k_answers = gsm8k_answers[start:end]
-    print('lenght ====', len(gsm8k_ins))
+    print('length ====', len(gsm8k_ins))
     batch_gsm8k_ins = batch_data(gsm8k_ins, batch_size=batch_size)
 
     stop_tokens = ["Question:", "Question", "USER:", "USER", "ASSISTANT:", "ASSISTANT", "Instruction:", "Instruction", "Response:", "Response"]
     sampling_params = SamplingParams(temperature=0.0, top_p=1, max_tokens=512, stop=stop_tokens)
-    print('sampleing =====', sampling_params)
+    print('sampling =====', sampling_params)
     llm = LLM(model=model,tensor_parallel_size=tensor_parallel_size)
     result = []
     res_completions = []
@@ -107,6 +108,7 @@ def gsm8k_test(model, data_path, start=0, end=MAX_INT, batch_size=1, tensor_para
         for output in completions:
             prompt = output.prompt
             generated_text = output.outputs[0].text
+            generated_text = generated_text.replace(step_tag, '')  # remove the step tag
             res_completions.append(generated_text)
 
     invalid_outputs = []
@@ -120,7 +122,7 @@ def gsm8k_test(model, data_path, start=0, end=MAX_INT, batch_size=1, tensor_para
             temp = {'question': prompt, 'output': completion, 'answer': prompt_answer}
             invalid_outputs.append(temp)
     acc = sum(result) / len(result)
-    print('len invalid outputs ====', len(invalid_outputs), ', valid_outputs===', invalid_outputs)
+    print('len invalid outputs ====', len(invalid_outputs), ', invalid_outputs===', invalid_outputs)
     print('start===', start, ', end====', end)
     print('gsm8k length====', len(result), ', gsm8k acc====', acc)
 
