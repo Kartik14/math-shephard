@@ -7,7 +7,7 @@ To tests **GSM8K** for peiyi9979/mistral-7b-sft, run the following command:
 python eval_gsm8k.py --model peiyi9979/mistral-7b-sft --data_file data/GSM8K_test.jsonl
 ```
 
-__Results__:
+__Results__(pass@1):
 
 || [__peiyi9979/mistral-7b-sft__](https://huggingface.co/peiyi9979/mistral-7b-sft)    | [__peiyi9979/math-shepherd-mistral-7b-rl__](https://huggingface.co/peiyi9979/math-shepherd-mistral-7b-rl) |
 |--------| -------- | ------- |
@@ -23,6 +23,7 @@ To test **MATH500** for peiyi9979/mistral-7b-sft ,run the following command:
 python eval_math.py --model peiyi9979/mistral-7b-sft --data_file data/MATH500_test.jsonl
 ```
 
+__Results__(pass@1)
 || [__peiyi9979/mistral-7b-sft__](https://huggingface.co/peiyi9979/mistral-7b-sft)    | [__peiyi9979/math-shepherd-mistral-7b-rl__](https://huggingface.co/peiyi9979/math-shepherd-mistral-7b-rl) |
 |--------| -------- | ------- |
 |Reported| 28.6  |  33.0  |
