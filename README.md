@@ -1,8 +1,8 @@
-Attempt at reproducing results from paper [Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations](https://arxiv.org/abs/2312.08935). The evaluation scripts have been modified from [MetaMath](https://github.com/meta-math/MetaMath/tree/main) repository.
+Attempt at reproducing results from paper [Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations](https://achieved-bellflower-4d6.notion.site/Math-Shepherd-Verify-and-Reinforce-LLMs-Step-by-step-without-Human-Annotations-41b6e73c860840e08697d347f8889bac). The evaluation scripts have been modified from [MetaMath](https://github.com/meta-math/MetaMath/tree/main) repository.
 
 ## GSM8k
 
-To run tests on GSM8K, run the following command:
+To tests **GSM8K** for peiyi9979/mistral-7b-sft, run the following command:
 ```
 python eval_gsm8k.py --model peiyi9979/mistral-7b-sft --data_file data/GSM8K_test.jsonl
 ```
@@ -16,11 +16,11 @@ __Results__:
 
 ## MATH500
 
-Data source: https://github.com/openai/prm800k/blob/main/prm800k/math_splits/test.jsonl modified for processing.
+Data source: https://github.com/openai/prm800k/blob/main/prm800k/math_splits/test.jsonl (further modified for eval).
 
-To run tests on GSM8K, run the following command:
+To test **MATH500** for peiyi9979/mistral-7b-sft ,run the following command:
 ```
-python eval_gsm8k.py --model peiyi9979/mistral-7b-sft --data_file data/GSM8K_test.jsonl
+python eval_math.py --model peiyi9979/mistral-7b-sft --data_file data/MATH500_test.jsonl
 ```
 
 || [__peiyi9979/mistral-7b-sft__](https://huggingface.co/peiyi9979/mistral-7b-sft)    | [__peiyi9979/math-shepherd-mistral-7b-rl__](https://huggingface.co/peiyi9979/math-shepherd-mistral-7b-rl) |
