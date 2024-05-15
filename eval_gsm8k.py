@@ -10,8 +10,6 @@ from vllm import LLM, SamplingParams
 import sys
 MAX_INT = sys.maxsize
 step_tag = 'ки'
-CACHE_DIR = '/scratch/amangupt/'
-os.environ["HF_HOME"] = CACHE_DIR
 
 def is_number(s):
     try:

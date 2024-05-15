@@ -11,8 +11,6 @@ import sys
 MAX_INT = sys.maxsize
 INVALID_ANS = "[invalid]"
 step_tag = 'ки'
-CACHE_DIR = '/scratch/amangupt/'
-os.environ["HF_HOME"] = CACHE_DIR
 
 
 invalid_outputs = []
